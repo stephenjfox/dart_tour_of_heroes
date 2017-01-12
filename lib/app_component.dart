@@ -1,20 +1,8 @@
 import 'package:angular2/core.dart';
 
-import 'hero_detail_component.dart';
 import 'hero.dart';
-
-final List<Hero> mockHeroes = [
-  new Hero(11, 'Mr. Nice'),
-  new Hero(12, 'Narco'),
-  new Hero(13, 'Bombasto'),
-  new Hero(14, 'Celeritas'),
-  new Hero(15, 'Magneta'),
-  new Hero(16, 'RubberMan'),
-  new Hero(17, 'Dynama'),
-  new Hero(18, 'Dr IQ'),
-  new Hero(19, 'Magma'),
-  new Hero(20, 'Tornado')
-];
+import 'hero_detail_component.dart';
+import 'package:dart_tour_of_heroes/hero_service.dart';
 
 
 @Component(
@@ -82,13 +70,16 @@ final List<Hero> mockHeroes = [
   }
 '''
     ],
-    directives: const [HeroDetailComponent]
+    directives: const [HeroDetailComponent],
+    providers: const [HeroService]
 )
 class AppComponent {
   final String title = "Tour of Heroes";
-  final List<Hero> heroes = mockHeroes;
-
+  final HeroService _heroService;
+  List<Hero> heroes;
   Hero selectedHero;
+
+  AppComponent(this._heroService);
 
   onSelect(Hero hero) {
     selectedHero = hero;
