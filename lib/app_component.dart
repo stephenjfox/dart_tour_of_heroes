@@ -1,12 +1,7 @@
 import 'package:angular2/core.dart';
 
-
-class Hero {
-  final int id;
-  String name;
-
-  Hero(this.id, this.name);
-}
+import 'hero_detail_component.dart';
+import 'hero.dart';
 
 final List<Hero> mockHeroes = [
   new Hero(11, 'Mr. Nice'),
@@ -26,14 +21,6 @@ final List<Hero> mockHeroes = [
     selector: 'my-app',
     template: '''
     <h1>{{title}}</h1>
-    <div *ngIf="selectedHero != null">
-      <h2>{{selectedHero.name}} details!</h2>
-      <div><label>id: </label> {{selectedHero.id}}</div>
-      <div>
-        <label>name: </label>
-        <input [(ngModel)]="selectedHero.name" placeholder="name">
-      </div>
-    </div>
 
     <h2>My Heroes</h2>
     <ul class="heroes">
@@ -43,6 +30,7 @@ final List<Hero> mockHeroes = [
         <span class="badge">{{hero.id}}</span> {{hero.name}}
       </li>
     </ul>
+    <my-hero-detail [hero]="selectedHero"></my-hero-detail>
     ''',
     styles: const [
       '''
@@ -93,7 +81,8 @@ final List<Hero> mockHeroes = [
     border-radius: 4px 0px 0px 4px;
   }
 '''
-    ]
+    ],
+    directives: const [HeroDetailComponent]
 )
 class AppComponent {
   final String title = "Tour of Heroes";
