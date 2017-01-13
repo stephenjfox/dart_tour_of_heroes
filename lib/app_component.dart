@@ -1,9 +1,9 @@
+import 'dart:async';
 import 'package:angular2/core.dart';
 
 import 'hero.dart';
 import 'hero_detail_component.dart';
 import 'package:dart_tour_of_heroes/hero_service.dart';
-
 
 @Component(
     selector: 'my-app',
@@ -70,9 +70,12 @@ import 'package:dart_tour_of_heroes/hero_service.dart';
   }
 '''
     ],
-    directives: const [HeroDetailComponent],
-    providers: const [HeroService]
-)
+    directives: const [
+      HeroDetailComponent
+    ],
+    providers: const [
+      HeroService
+    ])
 class AppComponent implements OnInit {
   final String title = "Tour of Heroes";
   final HeroService _heroService;
@@ -86,8 +89,8 @@ class AppComponent implements OnInit {
     fetchHeroes();
   }
 
-  void fetchHeroes() {
-    heroes = _heroService.getHeroes();
+  Future<Null> fetchHeroes() async {
+    heroes = await _heroService.getHeroes();
   }
 
   onSelect(Hero hero) {
