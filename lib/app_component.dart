@@ -73,13 +73,22 @@ import 'package:dart_tour_of_heroes/hero_service.dart';
     directives: const [HeroDetailComponent],
     providers: const [HeroService]
 )
-class AppComponent {
+class AppComponent implements OnInit {
   final String title = "Tour of Heroes";
   final HeroService _heroService;
   List<Hero> heroes;
   Hero selectedHero;
 
   AppComponent(this._heroService);
+
+  @override
+  ngOnInit() {
+    fetchHeroes();
+  }
+
+  void fetchHeroes() {
+    heroes = _heroService.getHeroes();
+  }
 
   onSelect(Hero hero) {
     selectedHero = hero;
