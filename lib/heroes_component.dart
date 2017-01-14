@@ -8,8 +8,6 @@ import 'package:dart_tour_of_heroes/hero_service.dart';
 @Component(
     selector: 'my-heroes',
     template: '''
-    <h1>{{title}}</h1>
-
     <h2>My Heroes</h2>
     <ul class="heroes">
       <li *ngFor="let hero of heroes"
@@ -72,9 +70,6 @@ import 'package:dart_tour_of_heroes/hero_service.dart';
     ],
     directives: const [
       HeroDetailComponent
-    ],
-    providers: const [
-      HeroService
     ])
 class HeroesComponent implements OnInit {
   final String title = "Tour of Heroes";
