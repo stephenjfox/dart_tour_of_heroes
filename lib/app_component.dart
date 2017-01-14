@@ -1,5 +1,7 @@
 import 'package:angular2/core.dart';
 import 'package:angular2/router.dart';
+
+import 'hero_detail_component.dart';
 import 'hero_service.dart';
 import 'heroes_component.dart';
 import 'dashboard_component.dart';
@@ -22,7 +24,10 @@ import 'dashboard_component.dart';
     name: 'Dashboard',
     component: DashboardComponent,
     useAsDefault: true
-  )
+  ),
+  const Route(path: '/detail/:id',
+      name: 'HeroDetail',
+      component: HeroDetailComponent),
 ])
 class AppComponent {
   final String title = "Tour of Heroes";
