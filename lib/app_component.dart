@@ -6,7 +6,7 @@ import 'hero_detail_component.dart';
 import 'package:dart_tour_of_heroes/hero_service.dart';
 
 @Component(
-    selector: 'my-app',
+    selector: 'my-heroes',
     template: '''
     <h1>{{title}}</h1>
 
@@ -76,13 +76,13 @@ import 'package:dart_tour_of_heroes/hero_service.dart';
     providers: const [
       HeroService
     ])
-class AppComponent implements OnInit {
+class HeroesComponent implements OnInit {
   final String title = "Tour of Heroes";
   final HeroService _heroService;
   List<Hero> heroes;
   Hero selectedHero;
 
-  AppComponent(this._heroService);
+  HeroesComponent(this._heroService);
 
   @override
   ngOnInit() {
