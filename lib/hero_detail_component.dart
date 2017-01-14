@@ -8,8 +8,9 @@ import 'hero.dart';
 import 'hero_service.dart';
 
 @Component(
-  selector: 'my-hero-detail',
-  templateUrl: 'hero_detail_component.html'
+    selector: 'my-hero-detail',
+    templateUrl: 'hero_detail_component.html',
+    styleUrls: const ['hero_detail_component.css']
 )
 class HeroDetailComponent implements OnInit {
 

@@ -15,6 +15,7 @@ import 'dashboard_component.dart';
         <a [routerLink]="['Heroes']">Heroes</a>
       </nav>
       <router-outlet></router-outlet>''',
+    styleUrls: const ['app_component.css'],
     directives: const [ROUTER_DIRECTIVES],
     providers: const [HeroService, ROUTER_PROVIDERS])
 @RouteConfig(const [
