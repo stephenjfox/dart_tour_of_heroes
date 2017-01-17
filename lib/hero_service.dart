@@ -28,8 +28,14 @@ class HeroService {
   }
 
   /// Fetch a hero from our API, individually by the id
-  Future<Hero> getHero(int id) async =>
-      (await getHeroes()).firstWhere((hero) => hero.id == id);
+  Future<Hero> getHero(int id) async {
+    try {
+      final response = await _http.get('$_heroesUrl/$id');
+      return new Hero.fromJson(_extractData(response));
+    } catch (e) {
+      throw _handleError(e);
+    }
+  }
 
   dynamic _extractData(Response resp) => JSON.decode(resp.body)['data'];
 
