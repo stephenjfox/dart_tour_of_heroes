@@ -9,6 +9,7 @@ import 'hero.dart';
 @Injectable()
 class HeroService {
   static const _heroesUrl = "api/heroes";
+  static final _headers = {'Content-Type': 'application/json'};
 
   final Client _http;
 
@@ -31,6 +32,19 @@ class HeroService {
   Future<Hero> getHero(int id) async {
     try {
       final response = await _http.get('$_heroesUrl/$id');
+      return new Hero.fromJson(_extractData(response));
+    } catch (e) {
+      throw _handleError(e);
+    }
+  }
+
+  /// Update the body of the Hero with new data
+  Future<Hero> updateHero(Hero hero) async {
+    try {
+      final url = '$_heroesUrl/${hero.id}';
+      final response =
+      await _http.put(url, headers: _headers, body: JSON.encode(hero));
+
       return new Hero.fromJson(_extractData(response));
     } catch (e) {
       throw _handleError(e);

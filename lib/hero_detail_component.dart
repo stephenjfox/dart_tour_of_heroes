@@ -24,6 +24,11 @@ class HeroDetailComponent implements OnInit {
 
   HeroDetailComponent(this._heroService, this._routeParams, this._location);
 
+  Future<Null> save() async {
+    await _heroService.updateHero(hero);
+    goBack();
+  }
+
   void goBack() => _location.back();
 
   @override
