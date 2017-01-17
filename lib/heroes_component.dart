@@ -41,6 +41,12 @@ class HeroesComponent implements OnInit {
     selectedHero = null;
   }
 
+  Future<Null> delete(Hero hero) async {
+    await _heroService.delete(hero.id);
+    heroes.remove(hero);
+    if (selectedHero == hero) selectedHero = null;
+  }
+
   onSelect(Hero hero) {
     selectedHero = hero;
   }
